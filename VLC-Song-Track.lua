@@ -23,15 +23,19 @@ Mac OS X: lua/{playlist,meta,intf}/
 --]]
 
 -- Global Variables
+-- Name of the file to save the songs
 FileName = "VLCSongTrack.csv"
 SongTrackFile = ""
+-- Default header for the csv file
 FileHeader = "Date,Time,Title,Artist,Album,Genre,Comments,Location\n"
+-- CSV variable normally ","
+CSVValue = "|"
 
 -- Descriptor
 function descriptor()
   return {
-    title = "VLC Song Track 0.0.5",
-    version = "0.0.5",
+    title = "VLC Song Track 0.0.6",
+    version = "0.0.6",
     author = "Reiuiji",
     url = "https://github.com/Reiuiji/VLCAddons",
     shortdesc = "VLC Song Track",
@@ -91,7 +95,6 @@ function update_song_track()
     local item = vlc.item or vlc.input.item()
     if item then
       local meta = item:metas()
-      local uri = item:uri()
       --Check Meta tags
       if meta then
         --Title
@@ -128,7 +131,10 @@ function update_song_track()
         local date = os.date("%d/%m/%Y")
         local time = os.date("%H:%M:%S")
 
-        local info = date .. "," .. time .. "," .. title .. "," .. artist .. "," .. album .. "," .. genre .. "," .. description .. "," .. uri
+        -- uri information
+        local uri = item:uri()
+
+        local info = date .. CSVValue .. time .. CSVValue .. title .. CSVValue .. artist .. CSVValue .. album .. CSVValue .. genre .. CSVValue .. description .. CSVValue .. uri
         write_file(info)
         return true
       end
