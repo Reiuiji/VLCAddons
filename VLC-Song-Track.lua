@@ -39,8 +39,8 @@ FileName = "SongList.csv"
 SongTrackerFile = ""
 -- Default header for the csv file
 FileHeader = "Date,Time,Title,Artist,Album,Genre,Comments,Location\n"
--- CSV variable normally ","
-CSVValue = "|"
+-- CSV field separator
+CSV_FS = ","--"|"
 
 -- Descriptor
 function descriptor()
@@ -145,7 +145,7 @@ function update_song_Tracker()
         -- uri information
         local uri = item:uri()
 
-        local info = date .. CSVValue .. time .. CSVValue .. title .. CSVValue .. artist .. CSVValue .. album .. CSVValue .. genre .. CSVValue .. description .. CSVValue .. uri
+        local info = date .. CSV_FS .. time .. CSV_FS .. title .. CSV_FS .. artist .. CSV_FS .. album .. CSV_FS .. genre .. CSV_FS .. description .. CSV_FS .. uri
         write_file(info)
         return true
       end
