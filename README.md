@@ -24,7 +24,7 @@ Mac OS X:
 * Current User: /Users/%your_name%/Library/Application Support/org.videolan.vlc/lua/extensions/
 * All Users: /Applications/VLC.app/Contents/MacOS/share/lua/extensions/
 
-## File Access:
+## Song List Location:
 The SongList.csv will be saved in the vlc user director which can be found in the following places:
 
 * Linux: ~/.local/share/vlc/SongList.csv
