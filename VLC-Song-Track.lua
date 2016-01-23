@@ -16,7 +16,9 @@ Place this file in the corresponding folder and restart vlc.
 
 Linux: ~/.local/share/vlc/lua/extensions/
 
-Windows and Mac OS X: lua/{playlist,meta,intf}/
+Windows: %APPDATA%\vlc\lua\extensions
+
+Mac OS X: lua/{playlist,meta,intf}/
 
 --]]
 
