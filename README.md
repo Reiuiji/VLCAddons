@@ -26,7 +26,6 @@ Mac OS X:
 
 ## Song List Location:
 The SongList.csv will be saved in the vlc user director which can be found in the following places:
-
 * Linux: ~/.local/share/vlc/SongList.csv
 * Windows: %APPDATA%\vlc\SongList.csv
 * Mac OS X: /Users/%your_name%/Library/Application Support/org.videolan.vlc/SongList.csv
