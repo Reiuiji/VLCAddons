@@ -2,7 +2,6 @@
 Collection of Various Addons/Extensions created for VLC
 
 ## VLC SONG TRACKER
-----------------
 [VLC-Song-Tracker.lua](VLC-Song-Tracker.lua)
 
 VLC Song Tracker is a extension that will help keep track of which songs were played in VLC.
@@ -30,7 +29,7 @@ The SongList.csv will be saved in the vlc user director which can be found in th
 * Windows: %APPDATA%\vlc\SongList.csv
 * Mac OS X: /Users/%your_name%/Library/Application Support/org.videolan.vlc/SongList.csv
 
------
+-----------
 GPL License
 
 © Reiuiji - 2016 All Rights reserved
