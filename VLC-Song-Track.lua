@@ -28,8 +28,8 @@ FileHeader = "Date,Time,Title,Artist,Album,Genre,Comments,Location\n"
 -- Descriptor
 function descriptor()
   return {
-    title = "VLC Song Track 0.0.1",
-    version = "0.0.1",
+    title = "VLC Song Track 0.0.5",
+    version = "0.0.5",
     author = "Reiuiji",
     url = "https://github.com/Reiuiji/VLCAddons",
     shortdesc = "VLC Song Track",
@@ -62,7 +62,7 @@ function input_changed()
 end
 function meta_changed()
   vlc.msg.dbg("[VLC Song Track] -- Meta Changed")
-  return false
+  update_song_track()
 end
 
 -- First time init file
@@ -94,18 +94,33 @@ function update_song_track()
       if meta then
         --Title
         local title = meta["title"]
+        if title == nil then
+          title = ""
+        end
 
         --Artist
         local artist = meta["artist"]
+        if artist == nil then
+          artist = ""
+        end
 
         --Album
         local album = meta["album"]
+        if album == nil then
+          album = ""
+        end
 
         --Genre
         local genre = meta["genre"]
+        if genre == nil then
+          genre = ""
+        end
 
         --Description
         local description = meta["description"]
+        if description == nil then
+          description = ""
+        end
 
         --Date & Time
         local date = os.date("%d/%m/%Y")
@@ -117,7 +132,6 @@ function update_song_track()
       end
     end
   end
-  --clear_file()
 end
 
 -- Write File
