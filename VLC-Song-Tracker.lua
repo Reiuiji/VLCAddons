@@ -99,7 +99,7 @@ function init()
   end
   
   SongTrackerFile = vlc.config.userdatadir() .. slash .. FileName
-  vlc.msg.dbg("[VLC Song Tracker] Song Tracker File: " .. SongTrackerFile .. ")")
+  vlc.msg.dbg("[VLC Song Tracker] Song Tracker File: " .. SongTrackerFile)
   -- Check if the file exist
   local file = io.open(SongTrackerFile,"r")
   if file ~= nil then
