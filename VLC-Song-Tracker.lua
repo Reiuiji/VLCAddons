@@ -45,8 +45,8 @@ CSV_FS = ","--"|"
 -- Descriptor
 function descriptor()
   return {
-    title = "VLC Song Tracker 0.1.0",
-    version = "0.1.0",
+    title = "VLC Song Tracker 0.1.1",
+    version = "0.1.1",
     author = "Reiuiji",
     url = "https://github.com/Reiuiji/VLCAddons",
     shortdesc = "VLC Song Tracker",
@@ -137,6 +137,8 @@ function update_song_Tracker()
         if description == nil then
           description = ""
         end
+        --Clean up Description: Remove new lines (\n) and puts two spaces instead
+        description = string.gsub(description, "\n", "  ")
 
         --Date & Time
         local date = os.date("%d/%m/%Y")
