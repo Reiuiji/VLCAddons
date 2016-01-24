@@ -88,13 +88,13 @@ function init()
   local slash = "/"
   --Determine which operating system
   if string.match(vlc.config.datadir(), "^(%a:.+)$") then --Windows Detected
-    vlc.msg.dbg("[VLC Song Tracker] -- OS Detected: Windows")
+    vlc.msg.dbg("[VLC Song Tracker] OS Detected: Windows")
     slash = "\\"
   elseif string.find(vlc.config.datadir(), 'MacOS') then -- Mac Detected
-    vlc.msg.dbg("[VLC Song Tracker] -- OS Detected: Mac OS X")
+    vlc.msg.dbg("[VLC Song Tracker] OS Detected: Mac OS X")
     slash = "/"
   else -- Linux/UNIX
-    vlc.msg.dbg("[VLC Song Tracker] -- OS Detected: Linux/Unix")
+    vlc.msg.dbg("[VLC Song Tracker] OS Detected: Linux/Unix")
     slash = "/"
   end
   
