@@ -57,28 +57,28 @@ end
 
 -- Activate plugin
 function activate()
-  vlc.msg.dbg("[VLC Song Tracker] -- Activate")
+  vlc.msg.dbg("[VLC Song Tracker] Activate")
   init()
   update_song_Tracker()
 end
 
 -- Deactivate Plugin
 function deactivate()
-  vlc.msg.dbg("[VLC Song Tracker] -- Deactivate")
+  vlc.msg.dbg("[VLC Song Tracker] Deactivate")
 end
 
 -- Close Trigger
 function close()
-  vlc.msg.dbg("[VLC Song Tracker] -- Close")
+  vlc.msg.dbg("[VLC Song Tracker] Close")
 end
 
 -- Triggers
 function input_changed()
-  vlc.msg.dbg("[VLC Song Tracker] -- Input Changed")
+  vlc.msg.dbg("[VLC Song Tracker] Input Changed")
   update_song_Tracker()
 end
 function meta_changed()
-  vlc.msg.dbg("[VLC Song Tracker] -- Meta Changed")
+  vlc.msg.dbg("[VLC Song Tracker] Meta Changed")
   update_song_Tracker()
 end
 
