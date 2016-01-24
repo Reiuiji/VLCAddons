@@ -45,8 +45,8 @@ CSV_FS = ","--"|"
 -- Descriptor
 function descriptor()
   return {
-    title = "VLC Song Tracker 0.1.1",
-    version = "0.1.1",
+    title = "VLC Song Tracker 0.1.2",
+    version = "0.1.2",
     author = "Reiuiji",
     url = "https://github.com/Reiuiji/VLCAddons",
     shortdesc = "VLC Song Tracker",
@@ -85,7 +85,20 @@ end
 -- First time init file
 function init()
   vlc.msg.dbg("[VLC Song Tracker] Initializing plugin")
-  SongTrackerFile = vlc.config.userdatadir() .. "/" .. FileName
+  local slash = "/"
+  --Determine which operating system
+  if string.match(vlc.config.datadir(), "^(%a:.+)$") then --Windows Detected
+    vlc.msg.dbg("[VLC Song Tracker] -- OS Detected: Windows")
+    slash = "\\"
+  elseif string.find(vlc.config.datadir(), 'MacOS') then -- Mac Detected
+    vlc.msg.dbg("[VLC Song Tracker] -- OS Detected: Mac OS X")
+    slash = "/"
+  else -- Linux/UNIX
+    vlc.msg.dbg("[VLC Song Tracker] -- OS Detected: Linux/Unix")
+    slash = "/"
+  end
+  
+  SongTrackerFile = vlc.config.userdatadir() .. slash .. FileName
   vlc.msg.dbg("[VLC Song Tracker] Song Tracker File: " .. SongTrackerFile .. ")")
   -- Check if the file exist
   local file = io.open(SongTrackerFile,"r")
