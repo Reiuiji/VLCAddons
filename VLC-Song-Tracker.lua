@@ -152,6 +152,8 @@ function update_song_Tracker()
         end
         --Clean up Description: Remove new lines (\n) and puts two spaces instead
         description = string.gsub(description, "\n", "  ")
+        --Remove carriage return
+        description = string.gsub(description, "\r", "")
 
         --Date & Time
         local date = os.date("%d/%m/%Y")
