@@ -41,12 +41,14 @@ SongTrackerFile = ""
 FileHeader = "Date,Time,Title,Artist,Album,Genre,Comments,Location\n"
 -- CSV field separator
 CSV_FS = ","--"|"
+-- maintain lastsong played
+lastsong = ""
 
 -- Descriptor
 function descriptor()
   return {
-    title = "VLC Song Tracker 0.1.2",
-    version = "0.1.2",
+    title = "VLC Song Tracker 0.1.4",
+    version = "0.1.4",
     author = "Reiuiji",
     url = "https://github.com/Reiuiji/VLCAddons",
     shortdesc = "VLC Song Tracker",
@@ -155,16 +157,29 @@ function update_song_Tracker()
         --Remove carriage return
         description = string.gsub(description, "\r", "")
 
-        --Date & Time
-        local date = os.date("%d/%m/%Y")
-        local time = os.date("%H:%M:%S")
-
         -- uri information
         local uri = item:uri()
 
-        local info = date .. CSV_FS .. time .. CSV_FS .. title .. CSV_FS .. artist .. CSV_FS .. album .. CSV_FS .. genre .. CSV_FS .. description .. CSV_FS .. uri
-        write_file(info)
-        return true
+        -- Combine Song Info Together
+        local songinfo = title .. CSV_FS .. artist .. CSV_FS .. album .. CSV_FS .. genre .. CSV_FS .. description .. CSV_FS .. uri
+
+        -- Check if the song was previously played
+        if lastsong == songinfo then
+          vlc.msg.dbg("[VLC Song Tracker] Duplicate song info detected, Skipping")
+          return false
+        else
+          -- New Song Detected
+          -- Update last song captured
+          lastsong = songinfo
+          -- Date & Time
+          local date = os.date("%d/%m/%Y")
+          local time = os.date("%H:%M:%S")
+
+          -- Add time stamp with the song info
+          local info = date .. CSV_FS .. time .. CSV_FS .. songinfo
+          write_file(info)
+          return true
+        end
       end
     end
   end
