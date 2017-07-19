@@ -38,7 +38,7 @@ The SongList.csv will be saved in the vlc user director which can be found in th
 FileName = "SongList.csv"
 SongTrackerFile = ""
 -- Default header for the csv file
-FileHeader = "Date,Time,Title,Artist,Album,Genre,Comments,Location\n"
+FileHeader = "Date,Time,Title,Artist,Album,NowPlaying,Genre,Comments,Location\n"
 -- CSV field separator
 CSV_FS = ","--"|"
 -- maintain lastsong played
@@ -140,7 +140,13 @@ function update_song_Tracker()
         if album == nil then
           album = ""
         end
-
+        
+        --Now Playing
+        local now_playing = meta["now_playing"]
+        if now_playing == nil then
+          now_playing = ""
+        end
+        
         --Genre
         local genre = meta["genre"]
         if genre == nil then
@@ -161,7 +167,7 @@ function update_song_Tracker()
         local uri = item:uri()
 
         -- Combine Song Info Together
-        local songinfo = title .. CSV_FS .. artist .. CSV_FS .. album .. CSV_FS .. genre .. CSV_FS .. description .. CSV_FS .. uri
+        local songinfo = title .. CSV_FS .. artist .. CSV_FS .. album .. CSV_FS .. now_playing .. CSV_FS .. genre .. CSV_FS .. description .. CSV_FS .. uri
 
         -- Check if the song was previously played
         if lastsong == songinfo then
