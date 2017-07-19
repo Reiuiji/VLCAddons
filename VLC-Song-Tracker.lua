@@ -1,6 +1,6 @@
 --[[
 VLC Song Tracker Extension for VLC media player
-Copyright 2016 Reiuiji
+Copyright 2016 - 2017 Reiuiji
 
 Authors: Reiuiji
 Contact: reiuiji@gmail.com
@@ -47,8 +47,8 @@ lastsong = ""
 -- Descriptor
 function descriptor()
   return {
-    title = "VLC Song Tracker 0.1.4",
-    version = "0.1.4",
+    title = "VLC Song Tracker 0.1.5",
+    version = "0.1.5",
     author = "Reiuiji",
     url = "https://github.com/Reiuiji/VLCAddons",
     shortdesc = "VLC Song Tracker",
